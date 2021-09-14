@@ -1,0 +1,35 @@
+.empty {
+    width: 250px;
+    border: 3px solid fuchsia;
+    color: fuchsia;
+    margin: 10px;
+    padding: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+
+}
+.form {
+    width: 250px;
+    border: 3px solid green;
+    color: green; 
+    margin: 10px;
+    padding: 15px;
+}
+
+.living {
+    width: 250px;
+    border: 3px solid blueviolet;
+    color: hsla(122, 38%, 84%, 0.329);
+    margin: 10px;
+    padding: 15px;
+}
+
+.container {
+    background-color: lightblue;
+}
