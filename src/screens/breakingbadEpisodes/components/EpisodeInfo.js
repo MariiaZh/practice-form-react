@@ -1,26 +1,23 @@
-import React, { useReducer } from "react";
-import Poster_01 from "../../assets/BB_S1_poster.jpg";
+import React from "react";
 
-import ListStyles from "../style/EpisodeStyle";
-import { Box, Typography } from "@material-ui/core";
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-
+import ListStyles from "../../../style/EpisodeStyle";
+import { Typography, Box, Card, CardContent, CardMedia } from "@material-ui/core";
 
 
 const EpisodeInfo = (props) => {
 
     const classes = ListStyles();
 
-
     return <Card className={classes.root}>
 
-        <CardMedia
-            className={`${classes.photo}`}
-            component="img"
-            height="140"
-            image={Poster_01} />
+        <CardContent className="imgWrapper">
+            <CardMedia
+                className={`${classes.photo}`}
+                component="img"
+                height="140"
+                image={props.image} />
+        </CardContent>
+
 
         <CardContent id="details">
 

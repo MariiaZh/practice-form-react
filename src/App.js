@@ -6,11 +6,12 @@ import { deepPurple, green } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 
 //import SelectedRoom from './components/SelectedRoom';
-import KitchenForm from './screens/KitchenForm';
-import LivingRoomForm from "./screens/LivingRoomForm";
-import BathroomForm from "./screens/BathroomForm";
-import BalconyForm from './screens/BalconyForm';
-import BreakingBadEpisodes from './screens/BreakingBadEpisodes';
+import KitchenForm from './screens/kitchenForm';
+import LivingRoomForm from "./screens/livingRoomForm";
+import BathroomForm from "./screens/bathroomForm";
+import BalconyForm from './screens/balconyForm';
+import BreakingBadEpisodes from './screens/breakingbadEpisodes';
+import { EpisodeProvider } from "./hooks/useEpisodeData";
 
 import './App.css';
 
@@ -68,10 +69,11 @@ function App() {
             <SelectedRoom onSelectedRoom={chooseRoom} />
             {getForm}
         </Container>*/}
-            <Container theme={theme} className={classes.root}>
-                <BreakingBadEpisodes />
-            </Container>
-
+            <EpisodeProvider>
+                <Container theme={theme} className={classes.root}>
+                    <BreakingBadEpisodes />
+                </Container>
+            </EpisodeProvider>
 
 
         </React.Fragment>

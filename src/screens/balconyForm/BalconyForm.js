@@ -1,93 +1,28 @@
 import React from 'react';
 import { useFormik } from "formik";
 
-import ValidationSchema from './validation/validation';
+import ValidationSchema from '../../helpers/validation/validation';
+import { Box, Typography, Button, TextField, Checkbox, Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 
-import { Box, Typography, Button, TextField, Checkbox } from '@material-ui/core';
-
-import { makeStyles } from '@material-ui/core/styles';
-import { deepPurple, pink } from '@material-ui/core/colors';
+import UseStyles from '../../style/FormStyle';
 
 
-const useStyles = makeStyles({
-    root: {
-        borderRadius: "0 0 15px 0",
-        boxShadow: `2px 2px 4px ${pink[100]}`,
-        color: deepPurple[600],
-        padding: '10px',
-        margin: "10px auto",
 
-        "& div": {
-            borderBottom: `2px dotted ${pink[500]}`,
-            padding: 15,
-        },
+const BalconyForm = () => {
 
-        "& div div": {
-            borderBottom: `none`,
-            padding: 2,
-        },
+    const [balconyType, setBalconyType] = React.useState('');
 
-        "& h6": {
-            color: pink[600],
-        },
+    const handleBalconyChange = (event) => {
 
-        "& button": {
-            display: "block",
-            background: pink[500],
-            margin: "25px 0 15px 15px",
-            color: "white",
-            border: `2px solid ${pink[800]}`,
-            borderRadius: 7,
-        },
 
-        "& #params": {
-            display: 'flex',
-            flexFlow: 'row wrap',
-            justifyContent: "space-around",
-        },
 
-        "& #params h6": {
-            width: '100%',
-        },
+        setBalconyType(event.target.value);
+        console.log('event);:', event.target)
+        console.log(formik.values.glazing + " ---- " + formik.values.french + " ---- " + formik.values.takeOut + " ---- " + formik.values.notGlazing);
 
-        "&.wrapper": {
-            width: '30%',
-        },
+    };
 
-        "& #params label": {
-            display: 'block',
-            width: '100%',
-        },
-
-        "& input[type='number']": {
-            width: '60px',
-
-        },
-
-        "& input[type='text']": {
-            width: "auto",
-        },
-
-        "& input[type='email']": {
-            width: "auto"
-        },
-
-        "& input[type='checkbox']": {
-            marginLeft: 20,
-        },
-
-        "& label": {
-            margin: 5,
-            color: deepPurple[800],
-            fontWeight: '500',
-        },
-
-    },
-});
-
-const BathroomForm = (props) => {
-
-    const classes = useStyles();
+    const classes = UseStyles();
 
     const formik = useFormik({
         initialValues: {
@@ -156,21 +91,26 @@ const BathroomForm = (props) => {
 
             </Box>
             <Box>
-                <Typography variant="h6">Mark the types of repairs:</Typography>
-                <Box>
-                    <Checkbox type="checkbox" name="tile"
-                        onChange={formik.handleChange}
-                        value={formik.values.tile} />
-                    <label htmlFor="tile">tile laying</label>
-                    <Checkbox type="checkbox" name="pipeline"
-                        onChange={formik.handleChange}
-                        value={formik.values.pipeline} />
-                    <label>pipeline laying</label>
-                    <Checkbox type="checkbox" name="window"
-                        onChange={formik.handleChange}
-                        value={formik.values.window} />
-                    <label>windows installation</label>
-                </Box>
+                <Typography variant="h6">Check type of the balcony renovation:</Typography>
+
+                {/*<Radio
+                    checked={selectedValue === 'a'}
+                    onChange={handleChange}
+                    value="a"
+                    name="radio-button-demo"
+                    inputProps={{ 'aria-label': 'A' }}
+                />*/}
+
+
+                <RadioGroup aria-label="balconyType" name="balconyType" value={balconyType} onChange={handleBalconyChange}>
+                    <FormControlLabel id="glazing" value={formik.values.glazing} control={<Radio />} label="Glazing Balcony" />
+                    <FormControlLabel id="french" value={formik.values.french} control={<Radio />} label="French Balcony" />
+                    <FormControlLabel id="takeOut" value={formik.values.takeOut} control={<Radio />} label="Balcony with take-out" />
+                    <FormControlLabel id="notGlazing" value={formik.values.notGlazing} control={<Radio />} label="Not glazed balcony" />
+                </RadioGroup>
+            </Box>
+
+            <Box>
                 <Box>
                     <Checkbox type="checkbox" name="furniture"
                         onChange={formik.handleChange}
@@ -220,10 +160,10 @@ const BathroomForm = (props) => {
                 />
             </Box>
             <Button type="submit">Submit</Button>
-        </form>
+        </form >
     </Box >
     );
 
 }
 
-export default BathroomForm;
+export default BalconyForm;

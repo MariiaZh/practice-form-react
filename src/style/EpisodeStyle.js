@@ -1,24 +1,32 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { green, yellow, blue, deepPurple } from '@material-ui/core/colors';
+import { green, yellow} from '@material-ui/core/colors';
 
 
 const ListStyles = makeStyles({
     root: {
         display: "flex",
+        flexDirection: "row",
         borderRadius: "0 0 15px 0",
         boxShadow: `2px 2px 4px ${yellow[100]}`,
         color: green[600],
         padding: '10px',
         margin: "10px auto",
 
+        "& .imgWrapper": {
+            width: "40%",
+            height: "100%",
+
+        },
+
         "& img": {
-            width: "500px",
+            width: "100%",
             height: "auto",
-            margin: "0px 15px 10px 0",
-            background: blue[500],
+            margin: 0,
+
         },
 
         "& #details": {
+            width: "60%",
             display: "flex",
             flexFlow: "row wrap",
             display: "block",

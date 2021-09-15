@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from "formik";
-import ValidationSchema from './validation/validation';
+import ValidationSchema from '../../helpers/validation/validation';
 
 import { Box, Typography, Button, TextField, Checkbox } from '@material-ui/core';
 
