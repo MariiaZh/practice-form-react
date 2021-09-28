@@ -1,24 +1,23 @@
 import React from 'react';
 import { useFormik } from "formik";
-
-import ValidationSchema from '../../helpers/validation/validation';
+import ValidationSchema from '../../../../helpers/validation/validation';
 
 import { Box, Typography, Button, TextField, Checkbox } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { deepPurple, pink } from '@material-ui/core/colors';
+import { deepPurple, green } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles({
     root: {
         borderRadius: "0 0 15px 0",
-        boxShadow: `2px 2px 4px ${pink[100]}`,
+        boxShadow: `2px 2px 4px ${green[100]}`,
         color: deepPurple[600],
         padding: '10px',
         margin: "10px auto",
 
         "& div": {
-            borderBottom: `2px dotted ${pink[500]}`,
+            borderBottom: `2px dotted ${green[500]}`,
             padding: 15,
         },
 
@@ -28,15 +27,15 @@ const useStyles = makeStyles({
         },
 
         "& h6": {
-            color: pink[600],
+            color: green[600],
         },
 
         "& button": {
             display: "block",
-            background: pink[500],
+            background: green[500],
             margin: "25px 0 15px 15px",
             color: "white",
-            border: `2px solid ${pink[800]}`,
+            border: `2px solid ${green[800]}`,
             borderRadius: 7,
         },
 
@@ -85,7 +84,7 @@ const useStyles = makeStyles({
     },
 });
 
-const BathroomForm = (props) => {
+const KitchenForm = (props) => {
 
     const classes = useStyles();
 
@@ -226,4 +225,5 @@ const BathroomForm = (props) => {
 
 }
 
-export default BathroomForm;
+export default KitchenForm;
+

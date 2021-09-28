@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { createTheme } from '@material-ui/core/styles';
 import { deepPurple, green } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 
-//import SelectedRoom from './components/SelectedRoom';
-import KitchenForm from './screens/kitchenForm';
-import LivingRoomForm from "./screens/livingRoomForm";
-import BathroomForm from "./screens/bathroomForm";
-import BalconyForm from './screens/balconyForm';
+import Renovation from './screens/renovation/Renovation';
+
+import { Route, Switch, Redirect } from "react-router-dom";
+
+import MainPage from "./components/mainPage/MainPage";
 import BreakingBadEpisodes from './screens/breakingbadEpisodes';
+import RickMorty from './screens/rickMorty';
 import { EpisodeProvider } from "./hooks/useEpisodeData";
 
 import './App.css';
@@ -43,42 +44,35 @@ function App() {
 
     const classes = useStyles();
 
-    const [selectedRoom, setSelectedRoom] = useState('Make choice');
 
-    const chooseRoom = (room) => {
-        setSelectedRoom(room);
-    }
-
-    let getForm = null;
-
-    switch (selectedRoom) {
-        case "Kitchen": getForm = <KitchenForm />;
-            break;
-        case "Living room": getForm = <LivingRoomForm />
-            break;
-        case "Bathroom": getForm = <BathroomForm />
-            break;
-        case "Balcony": getForm = <BalconyForm />
-            break;
-        default: getForm = <Typography variant="h6">Please, choose room for renovation!</Typography>
-    }
 
     return (
-        <React.Fragment>
-            {/*<Container theme={theme} className={classes.root}>
-            <SelectedRoom onSelectedRoom={chooseRoom} />
-            {getForm}
-        </Container>*/}
-            <EpisodeProvider>
-                <Container theme={theme} className={classes.root}>
-                    <BreakingBadEpisodes />
-                </Container>
-            </EpisodeProvider>
+        <MainPage>
+            <Switch>
+                <Route path="/" exact>
+                    <Redirect to="/home" />
+                </Route>
+                <Route path="/home">
+                    <div>Hello</div>
+                </Route>
 
+                <Route path="/renovation">
+                    <Renovation />
+                </Route>
 
-        </React.Fragment>
+                <Route path="/bbepisodes">
+                    <EpisodeProvider>
+                        <Container theme={theme} className={classes.root}>
+                            <BreakingBadEpisodes />
+                        </Container>
+                    </EpisodeProvider>
+                </Route>
 
-
+                <Route path="/rickmorty">
+                    <RickMorty />
+                </Route>
+            </Switch>
+        </MainPage>
     );
 }
 

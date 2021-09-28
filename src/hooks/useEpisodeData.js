@@ -13,7 +13,7 @@ export const useEpisodeData = () => {
 
 export const useProvideEpisode = () => {
 
-    const [currentEpisode, setCurrentEpisode] = useState(3);
+    const [currentEpisode, setCurrentEpisode] = useState(1);
     const [loadedEpisode, setLoadedEpisode] = useState({});
 
     const fetchEpisode = useCallback(async () => {
@@ -35,7 +35,7 @@ export const useProvideEpisode = () => {
                 characters: data[0].characters,
             })
 
-            console.log("loaded eps", loadedEpisode)
+            console.log("loaded", loadedEpisode)
         } catch (error) {
             console.error(error);
         }

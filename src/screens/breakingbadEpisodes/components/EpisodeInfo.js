@@ -1,7 +1,7 @@
 import React from "react";
 
 import ListStyles from "../../../style/EpisodeStyle";
-import { Typography, Box, Card, CardContent, CardMedia } from "@material-ui/core";
+import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
 
 
 const EpisodeInfo = (props) => {
