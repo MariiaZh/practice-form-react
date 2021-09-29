@@ -1,4 +1,5 @@
 import React, { useContext, useState, useCallback, useEffect } from "react";
+import FetchRequest from "../helpers/validation/api/FetchRequest";
 
 export const EpisodeContext = React.createContext();
 
@@ -18,12 +19,7 @@ export const useProvideEpisode = () => {
 
     const fetchEpisode = useCallback(async () => {
         try {
-            const response = await fetch('https://www.breakingbadapi.com/api/episodes/' + currentEpisode,
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
+            const response = await FetchRequest('https://www.breakingbadapi.com/api/episodes/', currentEpisode);
             const data = await response.json();
 
             setLoadedEpisode({

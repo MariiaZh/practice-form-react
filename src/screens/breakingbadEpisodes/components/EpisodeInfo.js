@@ -1,6 +1,6 @@
 import React from "react";
 
-import ListStyles from "../../../style/EpisodeStyle";
+import ListStyles from "../style/EpisodeStyle";
 import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
 
 
@@ -8,7 +8,7 @@ const EpisodeInfo = (props) => {
 
     const classes = ListStyles();
 
-    return <Card className={classes.root}>
+    return <Card>
 
         <CardContent className="imgWrapper">
             <CardMedia

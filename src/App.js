@@ -9,10 +9,11 @@ import Renovation from './screens/renovation/Renovation';
 
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import MainPage from "./components/mainPage/MainPage";
+import MainPage from "./screens/mainPage";
 import BreakingBadEpisodes from './screens/breakingbadEpisodes';
 import RickMorty from './screens/rickMorty';
 import { EpisodeProvider } from "./hooks/useEpisodeData";
+import Content from "./components/Content.js";
 
 import './App.css';
 
@@ -44,16 +45,14 @@ function App() {
 
     const classes = useStyles();
 
-
-
     return (
-        <MainPage>
+        <Content>
             <Switch>
                 <Route path="/" exact>
                     <Redirect to="/home" />
                 </Route>
                 <Route path="/home">
-                    <div>Hello</div>
+                    <MainPage />
                 </Route>
 
                 <Route path="/renovation">
@@ -62,9 +61,7 @@ function App() {
 
                 <Route path="/bbepisodes">
                     <EpisodeProvider>
-                        <Container theme={theme} className={classes.root}>
-                            <BreakingBadEpisodes />
-                        </Container>
+                        <BreakingBadEpisodes />
                     </EpisodeProvider>
                 </Route>
 
@@ -72,7 +69,7 @@ function App() {
                     <RickMorty />
                 </Route>
             </Switch>
-        </MainPage>
+        </Content>
     );
 }
 

@@ -5,8 +5,8 @@ import KitchenForm from './rooms/kitchenForm';
 import LivingRoomForm from "./rooms/livingRoomForm";
 import BathroomForm from "./rooms/bathroomForm";
 import BalconyForm from './rooms/balconyForm';
-import UseStyles from "../../style/FormStyle";
 import { createTheme } from '@material-ui/core/styles';
+import FormStyle from "./style/FormStyle";
 import { deepPurple, yellow } from '@material-ui/core/colors';
 
 const theme = createTheme({
@@ -23,9 +23,9 @@ const theme = createTheme({
 
 const Renovation = (props) => {
 
-    const classes = UseStyles();
     const [selectedRoom, setSelectedRoom] = useState('Make choice');
 
+    const classes = FormStyle();
     const chooseRoom = (room) => {
         setSelectedRoom(room);
     }

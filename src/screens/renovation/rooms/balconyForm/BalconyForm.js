@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import ValidationSchema from '../../../../helpers/validation/validation';
 import { Box, Typography, Button, TextField, Checkbox, Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 
-import UseStyles from '../../../../style/FormStyle';
+import FormStyle from '../../style/FormStyle';
 
 const BalconyForm = () => {
 
@@ -20,7 +20,7 @@ const BalconyForm = () => {
 
     };
 
-    const classes = UseStyles();
+    const classes = FormStyle();
 
     const formik = useFormik({
         initialValues: {

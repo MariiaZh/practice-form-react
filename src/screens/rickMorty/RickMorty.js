@@ -1,57 +1,41 @@
 import React, { Component } from "react";
 import { Typography, Card, CardContent, Button } from "@material-ui/core";
+import FetchRequest from "../../helpers/validation/api/FetchRequest";
 
 export class RickMorty extends Component {
 
     constructor(props) {
         super(props);
 
-        this.number = 0;
-
         this.state = {
-            character: {
-                name: '',
-                image: '',
-                gender: '',
-                species: '',
-                status: '',
-            }
-        }
-    };
+            number: 0,
+            isLoaded: false,
+            data: [],
+        };
+    }
 
     fetchEpisode() {
 
-        fetch("https://rickandmortyapi.com/api/character",
-            {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+        FetchRequest("https://rickandmortyapi.com/api/character")
             .then(response => response.json())
             .then(result => {
-
-                const data = result.results;
+                result.results;
                 this.setState({
-                    character: {
-                        name: data[this.number].name,
-                        image: data[this.number].image,
-                        gender: data[this.number].gender,
-                        species: data[this.number].species,
-                        status: data[this.number].status
-                    }
-                })
+                    data: result.results,
+                    isLoaded: true
+                });
             })
-
     }
 
-    ChangeCharacterHandler() {
-        this.number++;
-        if (this.number < 20) {
-            this.fetchEpisode();
+    changeCharacterHandler = () => {
+        if (this.state.number <= 18) {
+            this.setState({
+                number: this.state.number + 1,
+            })
         } else {
-            this.number = 0;
-            this.fetchEpisode();
+            this.setState({
+                number: 0,
+            })
         }
     }
 
@@ -60,17 +44,19 @@ export class RickMorty extends Component {
     }
 
     render() {
-
+        if (!this.state.isLoaded) {
+            return <p>Loading...</p>
+        }
         return (
             <Card>
                 <CardContent>
-                    <img src={this.state.character.image}
-                        title={this.state.character.name} />
-                    <Typography gutterBottom variant="h4" component="h1">{this.state.character.name}</Typography>
-                    <p>Gender: {this.state.character.gender}</p>
-                    <p>Species: {this.state.character.species}</p>
-                    <p>Status: {this.state.character.status}</p>
-                    <Button variant="contained" color="secondary" onClick={this.ChangeCharacterHandler.bind(this)}>Next</Button>
+                    <img src={this.state.data[this.state.number].image}
+                        title={this.state.data[this.state.number].name} />
+                    <Typography gutterBottom variant="h4" component="h1">{this.state.data[this.state.number].name}</Typography>
+                    <p>Gender: {this.state.data[this.state.number].gender}</p>
+                    <p>Species: {this.state.data[this.state.number].species}</p>
+                    <p>Status: {this.state.data[this.state.number].status}</p>
+                    <Button variant="contained" color="secondary" onClick={this.changeCharacterHandler}>Next</Button>
                 </CardContent>
             </Card>
         )
