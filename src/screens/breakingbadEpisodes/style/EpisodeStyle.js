@@ -1,11 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { green, yellow, blue } from '@material-ui/core/colors';
-
-
+import { green } from '@material-ui/core/colors';
+import bb_background from "../../../assets/20979.jpg";
+import bb_background_empty from "../../../assets/bb_background_empty.png";
 
 const ListStyles = makeStyles({
     root: {
-
         maxWidth: "100%",
         height: "100vh",
         display: "flex",
@@ -15,7 +14,7 @@ const ListStyles = makeStyles({
 
         "& .leftPart": {
             width: "49%",
-            backgroundImage: 'url("https://github.com/MariiaZh/potion/blob/main/20979.jpg?raw=true")',
+            backgroundImage: `url(${bb_background})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             padding: '25px',
@@ -29,7 +28,7 @@ const ListStyles = makeStyles({
 
         "& .rightPart": {
             width: "49%",
-            backgroundImage: 'url("https://github.com/MariiaZh/potion/blob/main/bb_background_empty.png?raw=true")',
+            backgroundImage: `url(${bb_background_empty})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             padding: '25px',
@@ -100,7 +99,6 @@ const ListStyles = makeStyles({
             width: "50%",
             display: "flex",
             flexFlow: "row wrap",
-            display: "block",
             margin: 0,
             background: "none",
         },
@@ -148,7 +146,6 @@ const ListStyles = makeStyles({
         "& .date span": {
             padding: "6px 8px",
             margin: "0 10px 0",
-            color: "black",
             fontWeight: "bold",
             background: `${green[900]}`,
             color: "white"

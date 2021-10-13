@@ -1,6 +1,6 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import ListStyles from './style/EpisodeStyle';
-import { Container, Box, Typography, Button, Slider } from '@material-ui/core';
+import { Container, Box, Button, Slider } from '@material-ui/core';
 import EpisodeInfo from "./components/EpisodeInfo";
 import { useProvideEpisode } from "../../hooks/useEpisodeData";
 import { CharactersContextProvider, useProvideCharacters } from "../../hooks/usePhotoCharacters";
@@ -29,8 +29,6 @@ const BreakingBadEpisodes = () => {
     return (
 
         <Container className={classes.root}>
-            {/*<Typography variant="h4" component="h3">BREAKING BAD. All about episodes</Typography>*/}
-
             <Container className="leftPart">
                 <Box className="buttonWrapper">
                     <Button onClick={showEpisode}>Choose Episode</Button>

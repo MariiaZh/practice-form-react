@@ -15,7 +15,6 @@ export class RickMorty extends Component {
     }
 
     fetchEpisode() {
-
         FetchRequest("https://rickandmortyapi.com/api/character")
             .then(response => response.json())
             .then(result => {
@@ -51,7 +50,8 @@ export class RickMorty extends Component {
             <Card>
                 <CardContent>
                     <img src={this.state.data[this.state.number].image}
-                        title={this.state.data[this.state.number].name} />
+                        title={this.state.data[this.state.number].name}
+                        alt="screenshot" />
                     <Typography gutterBottom variant="h4" component="h1">{this.state.data[this.state.number].name}</Typography>
                     <p>Gender: {this.state.data[this.state.number].gender}</p>
                     <p>Species: {this.state.data[this.state.number].species}</p>

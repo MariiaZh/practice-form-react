@@ -1,10 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
+import blockchain from "../../../assets/blockchain.jpg";
 
 const ListStyles = makeStyles({
     root: {
         height: "86vh",
         maxWidth: "100%",
-        backgroundImage: "url('https://github.com/MariiaZh/potion/blob/main/blockchain.jpg?raw=true')",
+        backgroundImage: `url(${blockchain})`,
         backgroundColor: "lightblue",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -23,7 +24,8 @@ const ListStyles = makeStyles({
             padding: 20,
             alignItems: 'center',
             justifyContent: 'center',
-            textDecoration: "none"
+            textDecoration: "none",
+            borderRadius: 2
         },
 
         "& .light": {
