@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Checkbox, Typography } from "@material-ui/core";
+import { Checkbox } from "@material-ui/core";
+//import { Typography } from "@material-ui/core";
+
 import ItemStyles from "../style/ItemStyles";
 import { todoWorkerActions } from "../../../store/todoWorker";
 import { useDispatch, useSelector } from "react-redux";

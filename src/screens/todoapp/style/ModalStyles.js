@@ -1,46 +1,33 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { cyan } from '@material-ui/core/colors';
 
-const ItemStyles = makeStyles({
+const ModalStyles = makeStyles({
     root: {
-        display: "flex",
-        justifyContent: " space-between",
+        position: 'fixed',
+        width: "40%",
+        minHeight: "15%",
+        margin: "200px 400px",
+        background: "paleturquoise",
+        border: `2px solid ${cyan[300]}`,
+        borderRadius: 6,
+        padding: 10,
+        zIndex: 33,
 
-        "& .main": {
-            margin: "10px 20px",
-            width: "40%",
-            minHeight: 60,
-            background: cyan[300],
-            display: "flex",
-            alignItems: "center",
-            border: `2px solid ${cyan[300]}`,
+        "& .textarea": {
+            width: "91%",
+            margin: 10,
+            padding: 10,
+            fontSize: 18,
+            border: 0,
             borderRadius: 6,
-            fontSize: 24,
-            zIndex: 999,
         },
 
-        "& .main:hover": {
-            background: cyan[100],
-            cursor: "grab"
+        "& button": {
+            display: "block",
+            margin: 10,
         },
-
-        "& .main:active": {
-            background: cyan[100],
-            cursor: "grab"
-        },
-        "& .main:visited": {
-            background: cyan[300],
-        },
-
-        "& .done": {
-            textDecoration: "line-through",
-            background: cyan[600],
-            border: `2px solid ${cyan[800]}`,
-        },
-
     },
-
 });
 
 
-export default ItemStyles;
+export default ModalStyles;

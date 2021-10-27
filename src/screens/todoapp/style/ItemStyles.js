@@ -18,7 +18,7 @@ const ItemStyles = makeStyles({
             border: `2px solid ${cyan[300]}`,
             borderRadius: 6,
             fontSize: 24,
-            zIndex: 999,
+            zIndex: 11,
         },
 
         "& .main:hover": {

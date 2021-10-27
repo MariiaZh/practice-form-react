@@ -20,7 +20,7 @@ const todoWorker = createSlice({
         },
 
         changeOrder(state, action) {
-            console.log("inside reducer change order")
+            //console.log("inside reducer change order")
             const shuffleIndex = findIndex(state.initialData, action.payload);
             const dragCardOrder = state.dragCard.order;
             state.initialData = state.initialData.map((item, index) => {
@@ -158,7 +158,6 @@ const todoWorker = createSlice({
 
 export const todoWorkerActions = todoWorker.actions;
 export default todoWorker.reducer;
-
 
 const sortArray = (arr) => {
     return arr.sort((a, b) => { return a.order - b.order });
