@@ -4,7 +4,7 @@ import { Box, Tabs, Tab, Avatar } from '@material-ui/core';
 import { useDispatch, useSelector } from "react-redux";
 import { cardSelectionActions } from "../store/cardSelection";
 import { userAuthActions } from "../store/userAuth";
-import { pink } from '@mui/material/colors';
+
 
 import HeaderStyles from "./HeaderStyles";
 
@@ -13,6 +13,7 @@ export default function Header(props) {
     const classes = HeaderStyles();
 
     const userLogin = useSelector(state => state.userAuth.login);
+    const newAccount = useSelector(state => state.userAuth.newAccount);
 
     const dispatch = useDispatch();
     const value = useSelector(state => state.cardSelection.selectedName);
@@ -26,6 +27,10 @@ export default function Header(props) {
     const logoutHandler = (event) => {
         dispatch(userAuthActions.logoutUser());
         dispatch(cardSelectionActions.changeName(0))
+    }
+
+    const switchFormHandler = () => {
+        dispatch(userAuthActions.switchButton());
     }
 
     return (
@@ -46,7 +51,7 @@ export default function Header(props) {
 
             {!userLogin && (
                 <Fragment>
-                    <Tab className="login" label="login" component={Link} to="/login" onClick={logoutHandler} />
+                    <Tab className="login" label={newAccount ? "login" : "create account"} component={Link} to="/login" onClick={switchFormHandler} />
                 </Fragment>
             )}
         </Box >

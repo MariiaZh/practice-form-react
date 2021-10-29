@@ -18,9 +18,10 @@ export class RickMorty extends Component {
         FetchRequest("https://rickandmortyapi.com/api/character")
             .then(response => response.json())
             .then(result => {
-                result.results;
+
+                const data = result.results;
                 this.setState({
-                    data: result.results,
+                    data: data,
                     isLoaded: true
                 });
             })

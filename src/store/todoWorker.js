@@ -11,7 +11,6 @@ const todoWorker = createSlice({
     name: "todoWorker",
     initialState,
     reducers: {
-
         chooseDragCard(state, action) {
             const item = state.initialData.find(item => item.id === action.payload)
             state.dragCard = {
@@ -106,7 +105,6 @@ const todoWorker = createSlice({
         },
 
         updateTask(state, action) {
-
             state.initialData = state.initialData.map(item => {
                 if (item.id === action.payload.id) {
                     return {

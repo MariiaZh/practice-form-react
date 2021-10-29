@@ -4,35 +4,39 @@ const initialState = {
     login: false,
     newAccount: false,
     avatar: '',
-    users: [{
-        id: "user001",
-        name: "Bond",
-        password: "007",
-    }]
+    user: {
+        id: '',
+        email: '',
+        password: ""
+    }
 }
 
 const userAuth = createSlice({
     name: "userAuth",
     initialState,
     reducers: {
-        verificateUser(state, action) {
 
-            state.users.map(user => {
-                if (user.name === action.payload.inputName && user.password === action.payload.inputPassword) {
-                    state.login = true;
-                    state.avatar = user.name.slice(0, 1);
-                    console.log(state.avatar)
-                    return;
-                }
-
-
-                return;
-            })
+        updateUser(state, action) {
+            state.user = {
+                id: action.payload.id,
+                email: action.payload.email,
+                password: action.payload.password
+            }
+            state.login = true;
+            state.avatar = action.payload.email.slice(0, 1);
+            console.log("state.login", state.login)
         },
 
         logoutUser(state) {
             state.login = false;
-        }
+        },
+
+        switchButton(state) {
+            state.newAccount = !state.newAccount;
+        },
+
+
+
 
     }
 })

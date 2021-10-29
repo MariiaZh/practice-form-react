@@ -4,8 +4,6 @@ import TodoStyles from "./style/TodoStyle";
 import { todoWorkerActions } from "../../store/todoWorker";
 import { useDispatch, useSelector } from "react-redux";
 
-
-
 let startFlag = false;
 
 const Todoapp = () => {

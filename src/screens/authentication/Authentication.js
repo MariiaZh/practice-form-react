@@ -2,66 +2,59 @@ import React, { Fragment, useRef } from "react";
 import AuthStyles from "./style/AuthenticationStyles";
 import { userAuthActions } from "../../store/userAuth";
 import { useDispatch, useSelector } from "react-redux";
+import PostRequest from "../../helpers/validation/api/PostRequest";
 
 const Authentication = (props) => {
     const classes = AuthStyles();
     const dispatch = useDispatch();
     const newAccount = useSelector(state => state.userAuth.newAccount);
-    const nameValue = useRef();
+    const emailValue = useRef();
     const passwordValue = useRef();
+
+    let userData = {};
 
     const submitHandler = (event) => {
         event.preventDefault();
 
-        dispatch(userAuthActions.verificateUser({
-            inputName: nameValue.current.value,
-            inputPassword: passwordValue.current.value
-        }));
-        nameValue.current.value = "";
+        userData = PostRequest(emailValue.current.value, passwordValue.current.value, newAccount);
+
+        if (!!userData) {
+            dispatch(userAuthActions.updateUser({
+                id: userData.localId,
+                email: emailValue.current.value,
+                password: passwordValue.current.value
+            }
+            ));
+        }
+
+        emailValue.current.value = "";
         passwordValue.current.value = "";
     }
 
-    const createAccountHandler = () => {
-
+    const switchFormHandler = () => {
+        dispatch(userAuthActions.switchButton());
     }
 
-    return (<Fragment>
-        {!newAccount && (<form className={classes.root} onSubmit={submitHandler} >
-            <h1>Login</h1>
-            <input type="text" placeholder="Bond" ref={nameValue} />
-            <input type="password" placeholder="007" ref={passwordValue} />
-            <div className="wrapper">
-                <input type="submit" value="LOG IN" />
-            </div>
-            <div className="wrapper">
-                <input type="button" value="CREATE ACCOUNT" onClick={createAccountHandler} />
-            </div>
-        </form>
-        )}
-
-        {newAccount && (
-            <form className={classes.root} onSubmit={submitHandler} >
-                <h1>Create new user account</h1>
-                <input type="text" placeholder="input your name" ref={nameValue} />
-                <input type="password" placeholder="input your password" ref={passwordValue} />
+    return (
+        <Fragment>
+            <form autoComplete="on" className={classes.root} onSubmit={submitHandler} >
+                <h1>{newAccount ? "Create new user account" : "Login"}</h1>
+                <input
+                    type="email"
+                    placeholder={newAccount ? "input your email" : "bond@james.bond"}
+                    ref={emailValue} required />
+                <input
+                    type="password"
+                    placeholder={newAccount ? "input your password" : "007007"}
+                    ref={passwordValue} required />
                 <div className="wrapper">
-                    <input type="submit" value="CREATE ACCOUNT" />
+                    <input type="submit" value={newAccount ? "CREATE ACCOUNT" : "LOG IN"} />
                 </div>
                 <div className="wrapper">
-                    <input type="button" value="Log in" onClick={createAccountHandler} />
+                    <input type="button" value={newAccount ? "LOG IN" : "CREATE ACCOUNT"} onClick={switchFormHandler} />
                 </div>
             </form>
-
-
-        )}
-
-
-    </Fragment>
-
-
-
-
-
+        </Fragment >
     )
 }
 

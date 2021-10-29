@@ -16,7 +16,7 @@ const AuthStyles = makeStyles({
             textShadow: `3px 3px 2px ${teal[900]}`,
         },
 
-        "& input[type=text], input[type=password]": {
+        "& input[type=email], input[type=password]": {
             display: "block",
             width: "94%",
             height: 25,
